@@ -1,0 +1,93 @@
+<h1>Calculadora de Resistencia</h1>
+
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <div class="form-group">
+        <div class="form-group">
+          <label for="banda1">banda1 </label>
+          <select [(ngModel)]="banda1" class="form-control" name="banda1" required>
+            <option value="" selected> Seleccione una opción</option>
+            <option *ngFor="let item of colores" [value]="item.value" [style.background]="item.color">
+              {{ item.name }}
+            </option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="banda2">banda2 </label>
+          <select [(ngModel)]="banda2" class="form-control" name="banda2" required>
+            <option value="" selected> Seleccione una opción</option>
+            <option *ngFor="let item of colores" [value]="item.value" [style.background]="item.color">
+              {{ item.name }}
+            </option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="banda3">banda3 </label>
+          <select [(ngModel)]="banda3" class="form-control" name="banda3" required>
+            <option value="" selected> Seleccione una opción</option>
+            <option *ngFor="let item of colores" [value]="item.value" [style.background]="item.color">
+              {{ item.name }}
+            </option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="banda4">Toleracia </label>
+          <select [(ngModel)]="banda4" class="form-control" name="banda4" required>
+            <option value="" selected> Seleccione una opción</option>
+            <option *ngFor="let item of tolerancias" [value]="item.value" [style.background]="item.color">
+              {{ item.name }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <button type="submit" (click)="calcularResistencia()" class="btn btn-success" style="margin-top: 20px;">Calcular
+        Resistencia</button>
+    </div>
+    <div class="col-6">
+      <img
+        src="https://cdn.slidesharecdn.com/ss_thumbnails/codigodecolorespararesistenciasde4bandas-200605220603-thumbnail.jpg?w=3840&q=90">
+    </div>
+  </div>
+  <div class="row" *ngIf="respuesta !== null">
+      <div class="col-6">
+        <h1>Resultados</h1>
+        <h2>Valor: {{respuesta.val}}</h2>
+        <br>
+        <h2>Minimo: {{respuesta.min}}</h2>
+        <br>
+        <h2>Maximo: {{respuesta.max}}</h2>
+      </div>
+      <div class="col-6">
+
+        <h1>Bandas</h1>
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th class="col">Banda 1:</th>
+                <th class="col">Banda 2</th>
+                <th class="col">Banda 3</th>
+                <th class="col">Banda 4</th>
+              </tr>
+            </thead>
+            <tr>
+              <td>
+                <p [style.background]="respuesta.ban1.color" class="btn btn-primary w-100">{{respuesta.ban1.name}}
+                  
+                </p>
+              </td>
+              <td>
+                <p [style.background]="respuesta.ban2.color" class="btn btn-primary w-100">{{respuesta.ban2.name}}</p>
+              </td>
+              <td>
+                <p [style.background]="respuesta.ban3.color" class="btn btn-primary w-100">{{respuesta.ban3.name}}</p>
+              </td>
+              <td>
+                <p [style.background]="respuesta.ban4.color" class="btn btn-primary w-100">{{respuesta.ban4.name}}</p>
+              </td>
+          </table>
+      </div>
+    </div>
+  </div>
+</div>
