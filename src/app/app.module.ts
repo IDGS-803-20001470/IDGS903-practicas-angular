@@ -10,6 +10,7 @@ import { CinepolisModule } from './utl/cinepolis/cinepolis.module';
 import { PuntosModule } from './utl/puntos/puntos.module';
 import { ResistenciasModule } from './utl/resistencias/resistencias.module';
 import { MenuComponent } from './utl/menu/menu.component';
+import { PizzasModule } from './utl/pizzas/pizzas.module';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { MenuComponent } from './utl/menu/menu.component';
     PuntosModule,
     ResistenciasModule,
     AppRoutingModule,
+    PizzasModule
   ],
   providers: [],
   bootstrap: [AppComponent]

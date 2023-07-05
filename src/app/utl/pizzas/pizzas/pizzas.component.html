@@ -1,0 +1,130 @@
+<div class="container">
+  <h1>Orden de Pizza</h1>
+  <div class="row">
+    <div class="col-4">
+      <div class="mb-3">
+        <label for="nombre">Nombre:</label>
+        <input type="text" class="form-control" id="nombre" [(ngModel)]="nombre" placeholder="Ingrese su nombre">
+
+      </div>
+      <div class="mb-3">
+        <label>Tamaño:</label>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="tamaño" id="chica" [(ngModel)]="tamanio" value="40">
+          <label class="form-check-label" for="chica">
+            Chica $40
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio"  name="tamaño" id="mediana" [(ngModel)]="tamanio" value="80">
+          <label class="form-check-label" for="mediana">
+            Mediana $80
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="tamaño" id="grande" [(ngModel)]="tamanio" value="120">
+          <label class="form-check-label" for="grande">
+            Grande $120
+          </label>
+        </div>
+      </div>
+
+
+    </div>
+    <div class="col-4">
+      <div class="mb-3">
+        <label for="direccion">Dirección:</label>
+        <input type="text" class="form-control" id="direccion" [(ngModel)]="direccion" placeholder="Ingrese su dirección">
+      </div>
+
+      <div class="mb-3">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckDisabled" [(ngModel)]="jamon">
+          <label class="form-check-label" for="flexCheckDisabled">
+            Jamon $10
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckDisabled"  [(ngModel)]="pina">
+          <label class="form-check-label" for="flexCheckDisabled">
+            Piña $10
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckDisabled" [(ngModel)]="champ">
+          <label class="form-check-label" for="flexCheckDisabled">
+            Champiñones $10
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="mb-3">
+        <label for="telefono">Teléfono:</label>
+        <input type="text" class="form-control" id="telefono" [(ngModel)]="telefono" placeholder="Ingrese su teléfono">
+      </div>
+      <div class="mb-3">
+        <label for="numPizzas">Número de Pizzas:</label>
+        <input type="number" class="form-control" id="numPizzas" [(ngModel)]="numPizzas" placeholder="Ingrese el número de pizzas">
+      </div>
+      <button type="submit" class="btn btn-primary mt-3" (click)="ordenarPizza()">Agregar</button>
+    </div>
+  </div>
+  <!--- Terminacion de 1er ROW      -->
+  <hr width=100%>
+  <div class="row">
+    <div class="col-6">
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Tamaño</th>
+            <th scope="col">Ingredientes</th>
+            <th scope="col">Num. Pizzas</th>
+            <th scope="col">Subtotal</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let p of arrayp">
+            <td>{{p.tamanio}}</td>
+            <td>{{p.ingrediente}}</td>
+            <td>{{p.cantidad}}</td>
+            <td>$ {{p.subtotal}}</td>
+            <td style="text-align: center;"><i class="fa fa-solid fa-trash" (click)="eliminarPedido(p.id)"></i></td>
+          </tr>
+        </tbody>
+      </table>
+      <div>
+        <h3>Total: ${{totalPedido}}</h3>
+      </div>
+      <button type="submit" class="btn btn-primary mt-3" (click)="guardarPedido()">Finalizar Pedido</button>
+
+    </div>
+    <div class="col-6">
+      <h1>Ventas del dia</h1>
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Cliente</th>
+            <th scope="col">Direccion</th>
+            <th scope="col">Telefono</th>
+            <th scope="col">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let p of arrayPedidosHoy">
+            <td>{{p.cliente}}</td>
+            <td>{{p.direccion}}</td>
+            <td>{{p.telefono}}</td>
+            <td>$ {{p.total}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+
+
+      <h2>Ventas totales del dia: $ {{totalDinero}}</h2>
+    </div>
+
+  </div>
+</div>
